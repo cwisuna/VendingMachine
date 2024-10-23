@@ -1,12 +1,11 @@
 ﻿using VendingMachine;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 class Program
 {
     public static void Main()
     {
         string filePath = @"C:\Users\alitt\source\repos\VendingMachine\VendingMachine\vmitems.txt";
-        List<Product> products = new List<Product>();   
+        List<Product> products = new List<Product>();
 
         foreach (var item in File.ReadLines(filePath))
         {
@@ -41,6 +40,18 @@ class Program
         foreach (var item in products)
         {
             Console.WriteLine(item.ToString());
+        }
+       Console.WriteLine();
+
+        while (true)
+        {
+            Console.WriteLine("Enter a slot number or exit to end");
+            string userInput = Console.ReadLine();  
+
+            if(userInput.ToLower() == "exit" || userInput == null)
+            {
+                break;
+            }
         }
     }
 }
