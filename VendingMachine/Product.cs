@@ -39,5 +39,10 @@ namespace VendingMachine
         {
             return SlotNumber;
         }
+
+        public override string ToString()
+        {
+            return $"Slot: {SlotNumber}, {ProductName} - Price: {Price:C}, Quanitity: {Quantity}";
+        }
     }
 }

@@ -6,6 +6,7 @@ class Program
     public static void Main()
     {
         string filePath = @"C:\Users\alitt\source\repos\VendingMachine\VendingMachine\vmitems.txt";
+        List<Product> products = new List<Product>();   
 
         foreach (var item in File.ReadLines(filePath))
         {
