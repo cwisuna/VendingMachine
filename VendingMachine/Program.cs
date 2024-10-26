@@ -46,12 +46,37 @@ class Program
         while (true)
         {
             Console.WriteLine("Enter a slot number or exit to end");
-            string userInput = Console.ReadLine();  
+            string userInput = Console.ReadLine();
 
-            if(userInput.ToLower() == "exit" || userInput == null)
+            if (userInput.ToLower() == "exit" || userInput == null)
             {
                 break;
+            };
+
+            Product productChosen = products.Find(prd => prd.SlotNumber.Equals(userInput, StringComparison.OrdinalIgnoreCase));
+
+            if (productChosen == null)
+            {
+                Console.WriteLine("Invalid Slot Number. Try again");
+                continue;
             }
+            if (productChosen.Quantity <= 0)
+            {
+                Console.WriteLine("This item is out of stock. Try again");
+                continue ;
+            }
+
+            Console.WriteLine($"You chose {productChosen.GetProductName()} - Price: {productChosen.GetPrice():C}");
+            Console.WriteLine("Enter your money. (Maximum amount of $10)");
+            string moneyString = Console.ReadLine();
+            decimal money = decimal.Parse(moneyString);
+
+            if(money > 10 || money <= 0)
+            {
+                Console.WriteLine("Try Again");
+            }
+            
+            
         }
     }
 }
