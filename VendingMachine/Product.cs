@@ -40,6 +40,24 @@ namespace VendingMachine
             return SlotNumber;
         }
 
+        public static void DisplayProducts(List<Product> products)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Available products:");
+            foreach (var item in products)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine();
+        }
+
+        public static void Logger(Product product, decimal amountGiven)
+        {
+            string logFilePath = @"C:\Users\alitt\source\repos\VendingMachine\VendingMachine\TransactionFile.txt";
+            string log = $"{product.ProductName} | {product.Price} | {DateTime.Now}";
+            File.AppendAllText(logFilePath, log);
+
+        }
         public override string ToString()
         {
             return $"{SlotNumber} | {ProductName} - Price: {Price:C}, Quanitity: {Quantity}";
